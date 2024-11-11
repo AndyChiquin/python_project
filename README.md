@@ -32,10 +32,19 @@ docker run itsandy/python_project
 docker login
 ~~~
 
-## Docker Desktop pull in Docker Hub
+## Docker Desktop push in Docker Hub
 ~~~
-docker pull itsandy/python_project
+docker push itsandy/python_project
+~~~
+
+## Python Image URL
+~~~
+https://hub.docker.com/r/itsandy/python_project
 ~~~
 
 # RailWay
 We log in and link to GitHub to deploy the repositories.
+
+## RailWay Deploy
+![Deploy Pythonl](Escritorio/DeployP1.png)
+![Deploy Python2](Escritorio/DeployP2.png)
