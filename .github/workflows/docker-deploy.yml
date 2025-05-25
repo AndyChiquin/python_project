@@ -1,4 +1,4 @@
-name: Docker Build and Push
+name: Docker Build, Push, and Deploy
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -33,3 +33,15 @@ jobs:
       run: |
         docker build -t itsandy/flask-hola:latest .
         docker push itsandy/flask-hola:latest
+
+    - name: Install doctl
+      run: |
+        sudo snap install doctl --classic
+
+    - name: Authenticate with DigitalOcean
+      env:
+        DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      run: doctl auth init -t $DIGITALOCEAN_TOKEN
+
+    - name: Deploy to DigitalOcean
+      run: doctl apps update --spec .do/app.yaml
