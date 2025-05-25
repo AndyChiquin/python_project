@@ -44,4 +44,4 @@ jobs:
       run: doctl auth init -t $DIGITALOCEAN_TOKEN
 
     - name: Deploy to DigitalOcean
-      run: doctl apps update --spec .do/app.yaml
+      run: doctl apps update 3c9a211c-40ad-4281-a13e-c0657e0ac140 --spec .do/app.yaml
